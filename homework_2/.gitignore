@@ -1,0 +1,17 @@
+# Artefatos de build
+build/
+*.o
+*.a
+*.so
+a.out
+
+# Binarios do projeto
+memory-simulator
+*.e
+*.exe
+
+# Relatorios de sanitizers e depuracao
+*.log
+*.gcda
+*.gcno
+core
