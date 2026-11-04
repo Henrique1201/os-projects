@@ -1,0 +1,97 @@
+# examples/saida_cenario_02.txt
+# Saida REAL capturada do binario (nada foi editado apos a captura).
+# Comando exato:
+#   ./build/memory-simulator --scenario=2 --strategy=1
+# Gerado em: 2026-11-03T22:49:54Z
+#
+Cenario: Fragmentacao externa
+Descricao: Quatro blocos de 256 KB ocupam exatamente os 1024 KB; ao liberar os processos 2 e 4, restam 512 KB livres em dois blocos de 256 KB.
+Objetivo: Mostrar que 512 KB livres no total nao bastam para uma solicitacao de 400 KB quando a maior regiao contigua tem apenas 256 KB.
+Memoria total: 1024 KB
++------------------------------------------------------------+
+Operacao: ALLOCATE | Processo: P1   | Tamanho: 256 KB
+Situacao: SUCESSO  | Endereco: 0 | Blocos examinados: 1
+Mensagem: Bloco alocado em 0 KB
+Estado: livre=768 KB | maior bloco=768 KB | fragmentacao=0.00% | blocos livres=1
++----------------------------------------------------------------+
+|P1              LIVRE                                           |
++----------------------------------------------------------------+
+|0               256                                         1024|
+Tamanhos (KB): P1=256 | LIVRE=768
+Operacao: ALLOCATE | Processo: P2   | Tamanho: 256 KB
+Situacao: SUCESSO  | Endereco: 256 | Blocos examinados: 2
+Mensagem: Bloco alocado em 256 KB
+Estado: livre=512 KB | maior bloco=512 KB | fragmentacao=0.00% | blocos livres=1
++----------------------------------------------------------------+
+|P1              P2              LIVRE                           |
++----------------------------------------------------------------+
+|0               256             512                         1024|
+Tamanhos (KB): P1=256 | P2=256 | LIVRE=512
+Operacao: ALLOCATE | Processo: P3   | Tamanho: 256 KB
+Situacao: SUCESSO  | Endereco: 512 | Blocos examinados: 3
+Mensagem: Bloco alocado em 512 KB
+Estado: livre=256 KB | maior bloco=256 KB | fragmentacao=0.00% | blocos livres=1
++----------------------------------------------------------------+
+|P1               P2              P3              LIVRE          |
++----------------------------------------------------------------+
+|0                256             512             768        1024|
+Tamanhos (KB): P1=256 | P2=256 | P3=256 | LIVRE=256
+Operacao: ALLOCATE | Processo: P4   | Tamanho: 256 KB
+Situacao: SUCESSO  | Endereco: 768 | Blocos examinados: 4
+Mensagem: Bloco alocado em 768 KB
+Estado: livre=0 KB | maior bloco=0 KB | fragmentacao=indefinida | blocos livres=0
++----------------------------------------------------------------+
+|P1               P2              P3              P4             |
++----------------------------------------------------------------+
+|0                256             512             768        1024|
+Tamanhos (KB): P1=256 | P2=256 | P3=256 | P4=256
+Operacao: FREE     | Processo: P2   | Tamanho: -
+Situacao: SUCESSO  | Endereco: 256 | Blocos examinados: 0
+Mensagem: Processo 2 liberado (256 KB)
+Estado: livre=256 KB | maior bloco=256 KB | fragmentacao=0.00% | blocos livres=1
++----------------------------------------------------------------+
+|P1               LIVRE           P3              P4             |
++----------------------------------------------------------------+
+|0                256             512             768        1024|
+Tamanhos (KB): P1=256 | LIVRE=256 | P3=256 | P4=256
+Operacao: FREE     | Processo: P4   | Tamanho: -
+Situacao: SUCESSO  | Endereco: 768 | Blocos examinados: 0
+Mensagem: Processo 4 liberado (256 KB)
+Estado: livre=512 KB | maior bloco=256 KB | fragmentacao=50.00% | blocos livres=2
++----------------------------------------------------------------+
+|P1               LIVRE           P3              LIVRE          |
++----------------------------------------------------------------+
+|0                256             512             768        1024|
+Tamanhos (KB): P1=256 | LIVRE=256 | P3=256 | LIVRE=256
+Operacao: ALLOCATE | Processo: P5   | Tamanho: 400 KB
+Situacao: FALHA    | Endereco: -1 | Blocos examinados: 4
+Mensagem: Sem espaco contiguo suficiente para 400 KB
+Estado: livre=512 KB | maior bloco=256 KB | fragmentacao=50.00% | blocos livres=2
++----------------------------------------------------------------+
+|P1               LIVRE           P3              LIVRE          |
++----------------------------------------------------------------+
+|0                256             512             768        1024|
+Tamanhos (KB): P1=256 | LIVRE=256 | P3=256 | LIVRE=256
+Operacao: ALLOCATE | Processo: P6   | Tamanho: 200 KB
+Situacao: SUCESSO  | Endereco: 256 | Blocos examinados: 2
+Mensagem: Bloco alocado em 256 KB
+Estado: livre=312 KB | maior bloco=256 KB | fragmentacao=17.95% | blocos livres=2
++----------------------------------------------------------------+
+|P1              P6          LIVR P3              LIVRE          |
++----------------------------------------------------------------+
+|0               256         456  512             768        1024|
+Tamanhos (KB): P1=256 | P6=200 | LIVRE=56 | P3=256 | LIVRE=256
+--- First Fit ---
+Total de solicitacoes  : 6
+Alocacoes realizadas   : 5
+Alocacoes com falha    : 1
+Memoria ocupada        : 712 KB
+Memoria livre          : 312 KB
+Maior bloco livre      : 256 KB
+Blocos livres          : 2
+Fragmentacao externa   : 17.95%
+Fragmentacao maxima    : 50.00%
+Blocos examinados      : 16
+Utilizacao             : 69.53%
+Taxa de sucesso        : 83.33%
+Taxa de falha          : 16.67%

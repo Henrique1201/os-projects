@@ -1,0 +1,26 @@
+# examples/saida_cenario_04_stress.txt
+# Saida REAL capturada do binario (nada foi editado apos a captura).
+# Comando exato:
+#   ./build/memory-simulator --scenario=4 --strategy=4 --stress-mem=1024 --stress-procs=8 --stress-min=50 --stress-max=300 --stress-ops=200 --stress-seed=42
+# Gerado em: 2026-11-03T22:49:54Z
+#
+Cenario: Estresse pseudoaleatorio
+Descricao: Sequencia reproduzivel de 200 operacoes com 8 processos, tamanhos entre 50 e 300 KB e semente 42; o desfecho de cada pedido depende da estrategia.
+Objetivo: Comparar como First Fit, Best Fit e Worst Fit lidam com a mesma carga mista, incluindo solicitacoes recusadas e o efeito da fragmentacao externa.
+Memoria total: 1024 KB
++------------------------------------------------------------+
+Metrica                                First Fit      Best Fit     Worst Fit
+---------------------------------- ------------- ------------- -------------
+Total de solicitacoes                        103           103           103
+Alocacoes realizadas                          68            74            71
+Alocacoes com falha                           35            29            32
+Taxa de sucesso (%)                       66.02%        71.84%        68.93%
+Taxa de falha (%)                         33.98%        28.16%        31.07%
+Memoria ocupada (KB)                         654           654           654
+Memoria livre (KB)                           370           370           370
+Maior bloco livre (KB)                       140           159           205
+Blocos livres                                  3             3             3
+Fragmentacao externa (%)                  62.16%        57.03%        44.MM%
+Fragmentacao maxima (%)                   63.57%        59.68%        67.32%
+Blocos examinados                            460           563           550
+Utilizacao (%)                            63.87%        63.87%        63.87%

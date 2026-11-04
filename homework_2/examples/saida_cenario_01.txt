@@ -1,0 +1,61 @@
+# examples/saida_cenario_01.txt
+# Saida REAL capturada do binario (nada foi editado apos a captura).
+# Comando exato:
+#   ./build/memory-simulator --scenario=1 --strategy=1
+# Gerado em: 2026-11-03T22:49:54Z
+#
+Cenario: Alocacoes sequenciais
+Descricao: Quatro processos solicitam blocos em sequencia, sem liberacoes.
+Objetivo: Observar o comportamento inicial das tres estrategias quando a memoria ainda esta praticamente livre.
+Memoria total: 1024 KB
++------------------------------------------------------------+
+Operacao: ALLOCATE | Processo: P1   | Tamanho: 100 KB
+Situacao: SUCESSO  | Endereco: 0 | Blocos examinados: 1
+Mensagem: Bloco alocado em 0 KB
+Estado: livre=924 KB | maior bloco=924 KB | fragmentacao=0.00% | blocos livres=1
++----------------------------------------------------------------+
+|P1     LIVRE                                                    |
++----------------------------------------------------------------+
+|0      100                                                  1024|
+Tamanhos (KB): P1=100 | LIVRE=924
+Operacao: ALLOCATE | Processo: P2   | Tamanho: 200 KB
+Situacao: SUCESSO  | Endereco: 100 | Blocos examinados: 2
+Mensagem: Bloco alocado em 100 KB
+Estado: livre=724 KB | maior bloco=724 KB | fragmentacao=0.00% | blocos livres=1
++----------------------------------------------------------------+
+|P1     P2           LIVRE                                       |
++----------------------------------------------------------------+
+|0      100          300                                     1024|
+Tamanhos (KB): P1=100 | P2=200 | LIVRE=724
+Operacao: ALLOCATE | Processo: P3   | Tamanho: 150 KB
+Situacao: SUCESSO  | Endereco: 300 | Blocos examinados: 3
+Mensagem: Bloco alocado em 300 KB
+Estado: livre=574 KB | maior bloco=574 KB | fragmentacao=0.00% | blocos livres=1
++----------------------------------------------------------------+
+|P1    P2          P3       LIVRE                                |
++----------------------------------------------------------------+
+|0     100         300      450                              1024|
+Tamanhos (KB): P1=100 | P2=200 | P3=150 | LIVRE=574
+Operacao: ALLOCATE | Processo: P4   | Tamanho: 300 KB
+Situacao: SUCESSO  | Endereco: 450 | Blocos examinados: 4
+Mensagem: Bloco alocado em 450 KB
+Estado: livre=274 KB | maior bloco=274 KB | fragmentacao=0.00% | blocos livres=1
++----------------------------------------------------------------+
+|P1    P2          P3       P4                   LIVRE           |
++----------------------------------------------------------------+
+|0     100         300      450                  750         1024|
+Tamanhos (KB): P1=100 | P2=200 | P3=150 | P4=300 | LIVRE=274
+--- First Fit ---
+Total de solicitacoes  : 4
+Alocacoes realizadas   : 4
+Alocacoes com falha    : 0
+Memoria ocupada        : 750 KB
+Memoria livre          : 274 KB
+Maior bloco livre      : 274 KB
+Blocos livres          : 1
+Fragmentacao externa   : 0.00%
+Fragmentacao maxima    : 0.00%
+Blocos examinados      : 10
+Utilizacao             : 73.24%
+Taxa de sucesso        : 100.00%
+Taxa de falha          : 0.00%

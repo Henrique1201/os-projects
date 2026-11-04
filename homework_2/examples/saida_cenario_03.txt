@@ -1,0 +1,41 @@
+# examples/saida_cenario_03.txt
+# Saida REAL capturada do binario (nada foi editado apos a captura).
+# Comando exato:
+#   ./build/memory-simulator --scenario=3 --strategy=4
+# Gerado em: 2026-11-03T22:49:54Z
+#
+Cenario: Criterios de escolha de bloco
+Descricao: Processos de 100 KB separam as regioes livres; apos as tres liberacoes existem 300 KB em 0, 200 KB em 400 e 324 KB em 700.
+Objetivo: No pedido de 180 KB, First Fit escolhe 0, Best Fit escolhe 400 e Worst Fit escolhe 700; no pedido de 250 KB, First Fit escolhe 700 e Best Fit/Worst Fit escolhem 0.
+Memoria total: 1024 KB
++------------------------------------------------------------+
+Metrica                                First Fit      Best Fit     Worst Fit
+---------------------------------- ------------- ------------- -------------
+Total de solicitacoes                          7             7             7
+Alocacoes realizadas                           7             7             7
+Alocacoes com falha                            0             0             0
+Taxa de sucesso (%)                      100.00%       100.00%       100.00%
+Taxa de falha (%)                          0.00%         0.00%         0.00%
+Memoria ocupada (KB)                         630           630           630
+Memoria livre (KB)                           394           394           394
+Maior bloco livre (KB)                       200           324           200
+Blocos livres                                  3             3             3
+Fragmentacao externa (%)                  49.24%        17.77%        49.24%
+Fragmentacao maxima (%)                   60.68%        60.68%        60.68%
+Blocos examinados                             22            26            26
+Utilizacao (%)                            61.52%        61.52%        61.52%
+ENDERECO ESCOLHIDO POR CADA ESTRATEGIA
+(comparacao justa, passo a passo)
+#    Operacao                     First Fit      Best Fit     Worst Fit
+   1 ALLOCATE P1 300 KB                   0             0             0
+   2 ALLOCATE P2 100 KB                 300           300           300
+   3 ALLOCATE P3 200 KB                 400           400           400
+   4 ALLOCATE P4 100 KB                 600           600           600
+   5 ALLOCATE P5 300 KB                 700           700           700
+   6 FREE P1                              0             0             0
+   7 FREE P3                            400           400           400
+   8 FREE P5                            700           700           700
+   9 ALLOCATE P6 180 KB                   0           400           700
+  10 ALLOCATE P7 250 KB                 700             0             0
+Nota: a mesma operacao foi aplicada as tres estrategias,
+cada uma com sua propria memoria independente.

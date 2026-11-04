@@ -1,0 +1,17 @@
+# Cenario 4 - Estresse reproduzivel
+#
+# Linha de comando reproduzivel (modo nao interativo):
+# ./build/memory-simulator --scenario=4 --strategy=4 --stress-mem=1024 --stress-procs=8 --stress-min=50 --stress-max=300 --stress-ops=200 --stress-seed=42
+#
+# O bloco abaixo e uma sequencia curta para explorar o modo personalizado
+# (opcao 5). Qualquer estrategia pode ser escolhida.
+ALLOCATE 1 100
+ALLOCATE 2 200
+FREE 1
+ALLOCATE 3 150
+ALLOCATE 4 50
+FREE 2
+ALLOCATE 5 120
+MAP
+METRICS
+QUIT

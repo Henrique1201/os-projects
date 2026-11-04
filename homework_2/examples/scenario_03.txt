@@ -1,0 +1,25 @@
+# Cenario 3 - Criterios de escolha de bloco
+#
+# Use na opcao 5 (cenario personalizado) com cada estrategia (1=First Fit,
+# 2=Best Fit, 3=Worst Fit) e compare o mapa final e os enderecos escolhidos.
+# A versao automatica desta comparacao fica na opcao 4.
+#
+# Os processos 2 e 4 (100 KB cada) permanecem ocupados e separam as regioes
+# livres. Apos as liberacoes de 1, 3 e 5, os blocos livres sao:
+#   300 KB em 0, 200 KB em 400 e 324 KB em 700.
+#
+# ALLOCATE 6 180: First Fit escolhe 0, Best Fit escolhe 400 e Worst Fit 700.
+# ALLOCATE 7 250: First Fit escolhe 700, Best Fit e Worst Fit escolhem 0.
+ALLOCATE 1 300
+ALLOCATE 2 100
+ALLOCATE 3 200
+ALLOCATE 4 100
+ALLOCATE 5 300
+FREE 1
+FREE 3
+FREE 5
+ALLOCATE 6 180
+ALLOCATE 7 250
+MAP
+METRICS
+QUIT

@@ -1,0 +1,14 @@
+# Cenario 1 - Alocacoes sequenciais
+#
+# Use na opcao 5 (cenario personalizado) com a estrategia 1 (First Fit) ou
+# qualquer outra estrategia. As linhas abaixo podem ser digitadas ou coladas
+# no prompt ">" do cenario personalizado.
+#
+# Objetivo: observar o empacotamento inicial da memoria, sem liberacoes.
+ALLOCATE 1 100
+ALLOCATE 2 200
+ALLOCATE 3 150
+ALLOCATE 4 300
+MAP
+METRICS
+QUIT

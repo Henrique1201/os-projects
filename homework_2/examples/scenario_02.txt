@@ -1,0 +1,20 @@
+# Cenario 2 - Fragmentacao externa
+#
+# Use na opcao 5 (cenario personalizado) com a estrategia 1 (First Fit) ou
+# qualquer outra estrategia. A memoria tem 1024 KB.
+#
+# Quatro blocos de 256 KB ocupam exatamente os 1024 KB. Os processos 2 e 4
+# sao liberados, deixando 512 KB livres, porem em dois blocos de 256 KB.
+# A solicitacao de 400 KB do processo 5 falha (maior bloco livre = 256 KB);
+# a de 200 KB do processo 6 e atendida.
+ALLOCATE 1 256
+ALLOCATE 2 256
+ALLOCATE 3 256
+ALLOCATE 4 256
+FREE 2
+FREE 4
+ALLOCATE 5 400
+ALLOCATE 6 200
+MAP
+METRICS
+QUIT
